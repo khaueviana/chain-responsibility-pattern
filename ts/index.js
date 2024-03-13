@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var customer_1 = require("./customer");
+var regular_discount_handler_1 = require("./regular-discount.handler");
+var vip_discount_handler_1 = require("./vip-discount.handler");
+var customer = new customer_1.Customer(true, false);
+var vipHandler = new vip_discount_handler_1.VIPDiscountHandler();
+vipHandler.setNextHandler(new regular_discount_handler_1.RegularDiscountHandler());
+var discountAmount = vipHandler.calculateDiscount(customer, 10);
+console.log(discountAmount);
